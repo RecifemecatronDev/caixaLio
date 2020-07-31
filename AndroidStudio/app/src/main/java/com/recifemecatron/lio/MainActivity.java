@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Credentials credenciais = new Credentials("Seu client id", "Seu accessToken aqui");
+        Credentials credenciais = new Credentials("G8lcvrxEdK045SsxiazLHbiVagCVfMeQb7le2XGLBKq8eUnLGe/ Vn2EbH8IgJSHN8ZlcD4iXTYR5sN0WLEppv9kHGoCr1IOr43rOL", "hEUjxMkLkDijYS1s9Zr7ypxHHIadHZRX1pp8KjZn17SRxI3n8e");
 
         OrderManager orderManager = new OrderManager(credenciais, MainActivity.this);
 
