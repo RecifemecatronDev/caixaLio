@@ -21,24 +21,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+/*
         Credentials credenciais = new Credentials("G8lcvrxEdK045SsxiazLHbiVagCVfMeQb7le2XGLBKq8eUnLGe/ Vn2EbH8IgJSHN8ZlcD4iXTYR5sN0WLEppv9kHGoCr1IOr43rOL", "hEUjxMkLkDijYS1s9Zr7ypxHHIadHZRX1pp8KjZn17SRxI3n8e");
-
         OrderManager orderManager = new OrderManager(credenciais, MainActivity.this);
-
         orderManager.bind(MainActivity.this, serviceBindListener);
+        */
 
-
+/*
         Context contexto = getApplicationContext();
         String texto = "Iniciou o OrderManeger";
         int duracao = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(contexto, texto,duracao);
         toast.show();
+        */
     }
 
     public void clique_lio(View view){
 
-       // Order order = orderManager.createDraftOrder("123456");
+        Credentials credenciais = new Credentials("G8lcvrxEdK045SsxiazLHbiVagCVfMeQb7le2XGLBKq8eUnLGe/ Vn2EbH8IgJSHN8ZlcD4iXTYR5sN0WLEppv9kHGoCr1IOr43rOL", "hEUjxMkLkDijYS1s9Zr7ypxHHIadHZRX1pp8KjZn17SRxI3n8e");
+        OrderManager orderManager = new OrderManager(credenciais, MainActivity.this);
+        orderManager.bind(MainActivity.this, serviceBindListener);
+
+        Order order = orderManager.createDraftOrder("123456");
 
         // Dados do produto teste
         String sku = "2891820317391823";
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         String unityOfMeasure = "UNIDADE";
 
         order.addItem(sku, name, unitPrice, quantity, unityOfMeasure);
+        orderManager.placeOrder(order);
 
     }
 
