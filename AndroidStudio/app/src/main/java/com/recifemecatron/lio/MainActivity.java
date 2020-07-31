@@ -2,11 +2,17 @@ package com.recifemecatron.lio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
 import android.os.Bundle;
 
+import cielo.orders.domain.Order ;
 import cielo.orders.domain.Credentials;
 import cielo.sdk.order.OrderManager;
 import cielo.sdk.order.ServiceBindListener;
+import  android.view.View;
+import android.widget.Toast;
+import android.content.Context;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,23 +26,70 @@ public class MainActivity extends AppCompatActivity {
         OrderManager orderManager = new OrderManager(credenciais, MainActivity.this);
 
         orderManager.bind(MainActivity.this, serviceBindListener);
+
+
+        Context contexto = getApplicationContext();
+        String texto = "Iniciou o OrderManeger";
+        int duracao = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(contexto, texto,duracao);
+        toast.show();
+    }
+
+    public void clique_lio(View view){
+
+       // Order order = orderManager.createDraftOrder("123456");
+
+        // Dados do produto teste
+        String sku = "2891820317391823";
+        String name = "Coca-cola lata";
+
+        // Preço do produto
+        int unitPrice = 550;
+        int quantity = 3;
+
+        // Unidade de medida do produto
+        String unityOfMeasure = "UNIDADE";
+
+        order.addItem(sku, name, unitPrice, quantity, unityOfMeasure);
+
     }
 
     ServiceBindListener serviceBindListener = new ServiceBindListener() {
 
         @Override public void onServiceBoundError(Throwable throwable) {
-            //Ocorreu um erro ao tentar se conectar com o serviço OrderManager
+
+            Context contexto = getApplicationContext();
+            String texto = "Ocorreu um erro ao tentar se conectar com o serviço OrderManager";
+            int duracao = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(contexto, texto,duracao);
+            toast.show();
+
         }
 
         @Override
         public void onServiceBound() {
-            //Você deve garantir que sua aplicação se conectou com a LIO a partir desse listener
-            //A partir desse momento você pode utilizar as funções do OrderManager, caso contrário uma exceção será lançada.
+            Context contexto = getApplicationContext();
+            String texto = "Funções do OrderManeger na moral";
+            int duracao = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(contexto, texto,duracao);
+            toast.show();
         }
 
         @Override
         public void onServiceUnbound() {
-            // O serviço foi desvinculado
+            Context contexto = getApplicationContext();
+            String texto = "O serviço foi desvinculado";
+            int duracao = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(contexto, texto,duracao);
+            toast.show();
         }
     };
+
+
+
+
 }
